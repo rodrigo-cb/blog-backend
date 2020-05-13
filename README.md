@@ -1,7 +1,6 @@
-# starter express app template
+# lab5-platform-api-rcaverob
+lab5-platform-api-rcaverob created by GitHub Classroom
 
-* node with babel
-* expressjs
-* airbnb eslint rules
+#What I did
 
-Procfile set up to run on [heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app)
+I used Express.js and Mongo tu build an API to be used by my blog application. Api handles requests to GET, POST, DELETE, and PUT (Update) blog posts.
