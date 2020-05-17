@@ -9,6 +9,7 @@ const PostSchema = new Schema({
   tags: String,
   content: String,
   coverUrl: String,
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 // , {

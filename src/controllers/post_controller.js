@@ -2,11 +2,15 @@ import Post from '../models/post_model';
 
 
 export const createPost = (req, res) => {
+  // console.log('Printing User:');
+  // console.log(req.user);
   const post = new Post();
   post.title = req.body.title;
   post.tags = req.body.tags;
   post.content = req.body.content;
   post.coverUrl = req.body.coverUrl;
+  post.author = req.user;
+
   post.save()
     .then((result) => {
       res.json(post);
@@ -18,7 +22,7 @@ export const createPost = (req, res) => {
 //   res.send('post should be created and returned');
 };
 export const getPosts = (req, res) => {
-  Post.find().exec((err, posts) => {
+  Post.find().populate('author', 'username').exec((err, posts) => {
     if (err) {
       res.status(500).json({ err });
     }
@@ -27,7 +31,7 @@ export const getPosts = (req, res) => {
 };
 
 export const getPost = (req, res) => {
-  Post.findById(req.params.id).exec((err, post) => {
+  Post.findById(req.params.id).populate('author', 'username').exec((err, post) => {
     res.json(post);
   });
 };
